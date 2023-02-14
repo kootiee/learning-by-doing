@@ -1,0 +1,108 @@
+#   === === === NUMBER GUESSING GAME === === ==== 
+
+#   THE MISSION
+# - The computer picks a number between 1 and 100, and asks you to guess.
+# - It tells you if you were too high or too low, and gives you six chances to guess.
+
+
+
+from random import randint
+
+#   CODE
+
+# print('You have', games, 'more chances left.' )
+# get rid of line 23! Everything must be in a function! <---------
+# you can make a import file
+# Try to not use mutable datatypes that can change in every function -> It's risky.
+# global scope - every function has to be independent. 
+
+def main():
+    user_input, target_number = numbers()
+    pass #here i can call functions, assign stuff, loops etc. SET UP THINGS YOU NEED!
+
+def numbers():
+    random_number = randint(0, 100)
+    input_user = int(input('Let\'s play a game! Guess a number. You can choose between 0 and 100: '))
+    return input_user, random_number
+
+input_and_random_numbers = list(numbers()) # this is NOT good. All the functions can see this -> It's mutable.
+
+def winning_or_not(input_and_random_numbers):
+    if input_and_random_numbers[0] == input_and_random_numbers[1]:
+        print('You did it! You won this game :)')
+    else:
+        higher_or_lower(input_and_random_numbers)
+
+def higher(input_and_random_numbers):
+    lower_number = int(input('Guess higher. You can do this! You can choose again: '))
+    input_and_random_numbers[0] = lower_number
+    return winning_or_not(input_and_random_numbers)
+    
+def lower(input_and_random_numbers):
+    higher_number = int(input('Guess lower. You can do this! You can choose again: '))
+    input_and_random_numbers[0] = higher_number
+    return winning_or_not(input_and_random_numbers)
+
+def higher_or_lower(input_and_random_numbers):
+    if input_and_random_numbers[0] < input_and_random_numbers[1]:
+        higher(input_and_random_numbers)
+    elif input_and_random_numbers[0] > input_and_random_numbers[1]:
+        lower(input_and_random_numbers)
+        
+# winning_or_not(input_and_random_numbers)
+
+#   IMPORT GUARD
+
+if __name__ == '__main__':
+    main()
+
+# =================================
+
+#   === === === NUMBER GUESSING GAME === === ==== 
+
+#   THE MISSION
+# - The computer picks a number between 1 and 100, and asks you to guess.
+# - It tells you if you were too high or too low, and gives you six chances to guess.
+
+
+
+from random import randint
+
+#   CODE
+
+def main():
+    user_input, target_number = numbers()
+    winning_or_not(user_input, target_number)
+
+def numbers():
+    random_number = randint(0, 100)
+    input_user = int(input('Let\'s play a game! Guess a number. You can choose between 0 and 100: '))
+    return input_user, random_number
+
+def winning_or_not(user_input, target_number):
+    if user_input == target_number:
+        print('You did it! You won this game :)')
+    else:
+        higher_or_lower(user_input, target_number)
+
+# def chances():
+#     count = 0
+#     while count < 
+
+def higher(user_input, target_number):
+    lower_number = int(input('Guess higher. You can do this! You can choose again: '))
+    return winning_or_not(lower_number, target_number)
+    
+def lower(user_input, target_number):
+    higher_number = int(input('Guess lower. You can do this! You can choose again: '))
+    return winning_or_not(higher_number, target_number)
+
+def higher_or_lower(user_input, target_number):
+    if user_input < target_number:
+        higher(user_input, target_number)
+    elif user_input > target_number:
+        lower(user_input, target_number)
+        
+#   IMPORT GUARD
+if __name__ == '__main__':
+    main()
