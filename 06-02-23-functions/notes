@@ -1,8 +1,74 @@
+#   === === === GITHUB === === ====
+#   git status
+#   git commit -m 'You Can Type Here A Message'
+#   git status
+#   git add . 
+#   git status
+#   git push
+
+
 #   === === === NUMBER GUESSING GAME === === ==== 
 
 #   THE MISSION
 # - The computer picks a number between 1 and 100, and asks you to guess.
 # - It tells you if you were too high or too low, and gives you six chances to guess.
+
+from random import randint
+from sys import exit
+
+def main():
+    user_input, target_number = numbers()
+    guessing(user_input, target_number, count = 6)
+
+def numbers():
+    random_number = randint(0, 100)
+    print(random_number)
+    input_user = int(input('Let\'s play a game! Guess a number. You can choose between 0 and 100: '))
+    return input_user, random_number
+
+def winning_or_not(user_input, target_number, count):
+    if user_input == target_number:
+        print('You did it! You won this game :) \nYou had', count, 'chances left. Well done!')
+        exit()
+
+def guessing(user_input, target_number, count):
+    while user_input != target_number:
+        count = count - 1
+        if count == 0:
+            print('Unfortunately, you lost. Don\'t worry, you can play again!')
+            exit()
+        else:
+            higher_or_lower(user_input, target_number, count)
+    winning_or_not(user_input, target_number, count)
+
+def higher_or_lower(user_input, target_number, count):
+    if user_input < target_number:
+        user_input = int(input('Guess higher. You can do this! You can choose again: '))
+    elif user_input > target_number:
+        user_input = int(input('Guess lower. You can do this! You can choose again: '))
+    winning_or_not(user_input, target_number, count)
+
+#   IMPORT GUARD
+if __name__ == '__main__':
+    main()
+
+# Commit this!
+# You can do this without exit() - line 23 is easy mode -> line 30 is hard mode
+# Line 21 and 26 does the same thing - they check if it is equal (or not)
+# higher_or_lower() can return something to guessing() -> new user_input
+# recursion is a function that calls itself! So it's allowed to call another function ;)
+
+#   === === === NUMBER GUESSING GAME === === ==== 
+
+#   THE MISSION
+# - The computer picks a number between 1 and 100, and asks you to guess.
+# - It tells you if you were too high or too low, and gives you six chances to guess.
+
+
+# BIG FUNCTION
+#ITERATABLE
+#--- ONE WITH A LOOP
+# YOU HAVE TO LOOP OVER SOMETHING
 
 
 

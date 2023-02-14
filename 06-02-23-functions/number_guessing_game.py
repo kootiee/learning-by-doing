@@ -36,11 +36,11 @@ def loser(user_input, target_number, count):
     
 def higher(user_input, target_number, count):
     lower_number = int(input('Guess higher. You can do this! You can choose again: '))
-    return winning_or_not(lower_number, target_number, count)
+    winning_or_not(lower_number, target_number, count)
     
 def lower(user_input, target_number, count):
     higher_number = int(input('Guess lower. You can do this! You can choose again: '))
-    return winning_or_not(higher_number, target_number, count)
+    winning_or_not(higher_number, target_number, count)
 
 def higher_or_lower(user_input, target_number, count):
     if user_input < target_number:
