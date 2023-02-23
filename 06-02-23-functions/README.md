@@ -35,6 +35,7 @@ This exercise is to help you understand how data flows into, through, and out of
     main()
   ```
   That's _it_. Your import guard calls a function called `main`, and that function has to arrange everything else. All the logic of your program must be contained within functions.
+* No global variables. Ever. (thanks for spotting that one @GijsterHaar)
 * Each function body can contain no more than a certain number of lines.
   * easy = 8
   * medium = 6
