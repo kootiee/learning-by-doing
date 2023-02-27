@@ -16,9 +16,9 @@ from sys import exit
 #   === === === CODE === === ==== 
 
 def main():
-    print(word)
     chances = -1
     blanks = '_' * len(word) 
+    print(' '.join(blanks))
     guessing(blanks, chances)
 
 def guessing(blanks, chances):
@@ -100,7 +100,7 @@ def try_again(hangman, blanks, chances):
     chances += 1
     print(hangman[chances], '\nThe entered letter does not exist in the word.\n')
     if chances == 5:
-        print('Unfortunately, you lost. Don\'t worry, you can play again!')
+        print('Unfortunately, you lost. The word was', word + '.', 'Don\'t worry, you can play again!')
         exit()
     guessing(blanks, chances)   
        
