@@ -172,3 +172,4 @@ def higher_or_lower(user_input, target_number):
 #   IMPORT GUARD
 if __name__ == '__main__':
     main()
+

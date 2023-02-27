@@ -39,9 +39,3 @@ def higher_or_lower(user_input, target_number):
 #   IMPORT GUARD
 if __name__ == '__main__':
     main()
-
-# Commit this!
-# You can do this without exit() - line 23 is easy mode -> line 30 is hard mode
-# Line 21 and 26 does the same thing - they check if it is equal (or not)
-# higher_or_lower() can return something to guessing() -> new user_input()
-# recursion is a function that calls itself! So it's allowed to call another function ;)

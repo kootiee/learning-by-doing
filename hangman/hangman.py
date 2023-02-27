@@ -18,32 +18,39 @@ from sys import exit
 def main():
     print(word)
     chances = -1
-    string_word = '_' * len(word) 
-    guessing(chances, string_word)
+    blanks = '_' * len(word) 
+    guessing(blanks, chances)
 
-def guessing(chances, string_word):
+def guessing(blanks, chances):
     user_input = input('\nChoose a letter: ')
-    checking_letter(user_input, chances, string_word)
+    checking_letter(user_input, blanks, chances)
 
-def checking_letter(user_input, chances, string_word):
+def checking_letter(user_input, blanks, chances):
     if user_input in list(word):
-        index = word.index(user_input)
-        blanks(user_input, index, string_word, chances)
-    hangman(chances, string_word)
+        blanky(user_input, blanks, chances)
+    hangman(blanks, chances)
 
-def blanks(user_input, index, string_word, chances):
+def blanky(user_input, blanks, chances):
     print('\nYou did it! You have successfully guessed a letter!', end=('\n'))
-    string_word = string_word[:index] + user_input + string_word[index + 1:]
-    winning(chances, string_word)
+    target_slice = word
+    while user_input in target_slice:
+        index = target_slice.index(user_input) 
+        blanks = blanking(word, index + (len(word)- len(target_slice)), blanks)
+        target_slice = target_slice[index + 1:]
+    winning(blanks, chances)
 
-def winning(chances, string_word):
-    print(' '.join(string_word))
-    if string_word == word:
+def blanking(word, index, blanks):
+    new_blanks = blanks[:index] + word[index] + blanks[index + 1:]
+    return new_blanks
+
+def winning(blanks, chances):
+    print(' '.join(blanks))
+    if blanks == word:
         print('\nYou did it! You won this game :)\n')
         exit()
-    guessing(chances, string_word)
+    guessing(blanks, chances)
 
-def hangman(chances, string_word):
+def hangman(blanks, chances):
     hangman = ['''
   +---+
   |   |
@@ -87,15 +94,15 @@ def hangman(chances, string_word):
  / \  |
       |
 =========''']
-    try_again(chances, hangman, string_word)
+    try_again(hangman, blanks, chances)
 
-def try_again(chances, hangman, string_word):
+def try_again(hangman, blanks, chances):
     chances += 1
     print(hangman[chances], '\nThe entered letter does not exist in the word.\n')
     if chances == 5:
         print('Unfortunately, you lost. Don\'t worry, you can play again!')
         exit()
-    guessing(chances, string_word)   
+    guessing(blanks, chances)   
        
 #   === === === IMPORT GUARD === === ==== 
 
