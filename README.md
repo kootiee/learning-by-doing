@@ -75,3 +75,11 @@ git add my_notes.txt secret_project_folder/ README.md
 * When prompted, enter your username.
 * When prompted for your password, paste your Personal Access Token in instead.
 * After this, your changes should be pushed to Github, and visible on the website.
+
+## Pull In Latest Upstream Changes
+
+* `git checkout main`
+* Ensure that everything is committed.
+* `git fetch --all`
+* `git merge upstream/main`
+* `git push --force`
