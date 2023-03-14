@@ -13,15 +13,23 @@
 #   THE MISSION:
 # - This program will import the movie data, and print the following information to the screen:
 #   Actor appearring in most movies: Judd Nelson
-#   Actor with best average rating: Jean Claude Van Damme x
-#   Least popular genre in the 1980's: music videos x
+#   Actor with best average rating: Robert Stack
+#   Actor with best average rating: Lloyd Bridges
+#   Actor with best average rating: John Malkovich
+#   Actor with best average rating: John Cusack
+#   Actor with best average rating: Ving Rhames
+#   Actor with best average rating: Peter Cullen
+#   Actor with best average rating: Frank Welker
+#   Actor with best average rating: Orson Welles
+#   Least popular genre in the 1980's: horror
+#   Least popular genre in the 1980's: action
+#   Least popular genre in the 1980's: drama
 
 #   NOTES:
 # - What makes these records easy to work with?
 #  
 # - What makes these records difficult to work with? 
-#  
-
+# 
 #   === === === IMPORT STATEMENTS === === ==== 
 
 from movie_data import movies
@@ -34,6 +42,9 @@ def main():
     actors_most_movies(actor_amountmovies)
     actor_ratings =  actor_and_ratings(actor_amountmovies)
     best_average_rating(actor_amountmovies, actor_ratings)
+    genre_dict = genres()
+    genre_dict_1980 = genre_1980(genre_dict)
+    least_popular_genre_1980(genre_dict_1980) 
 
 def extracting_data(list, dictionary):
     for movie in movies:
@@ -65,22 +76,28 @@ def best_average_rating(actor_amountmovies, actor_ratings):
     highest_rating = ['Leonardo DiCaprio ', 0]
     for rate in actor_movies_rating:
         if rate[1] > highest_rating[1]:
-            highest_rating = rate 
-    print(highest_rating)
+            highest_rating = rate
+    for actor, average_rate in actor_movies_rating:
+        if average_rate == highest_rating[1]:
+            print('Actor with best average rating:', actor)
 
+def genres(): 
+    genre_dict = dict()
+    for genre in movies:
+        genre_dict.update({genre['genre']: 0})
+    return genre_dict
     
-            
+def genre_1980(genre_dict):
+    for movie in movies:
+        if movie['year'] == 1980:
+            genre_dict[movie['genre']] += 1
+    return genre_dict        
 
-                
+def least_popular_genre_1980(genre_dict_1980):
+    for key, value in genre_dict_1980.items():
+        if value == min(genre_dict_1980.values()):
+            print('Least popular genre in the 1980\'s:', key)
     
-
-# Actor with best average rating:
-# - The amount of films the actor is involved x
-# - The rating of these films x
-# - Divide this rating with the amount of films x
-# - And then chose the actor with the best average rating
-            
-
 #   === === === IMPORT GUARD === === ==== 
 if __name__ == '__main__':
     main()
