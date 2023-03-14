@@ -12,10 +12,10 @@
 
 #   THE MISSION:
 # - This program will import the movie data, and print the following information to the screen:
-#   Total number of movies: 231
-#   Average rating of movies: 2.7
-#   Best movie: "2 Fast 2 Furious"
-#   Worst movie: "Citizen Kane"
+#   Total number of movies: 15
+#   Average rating of movies: 7.2
+#   Best movie: Leprechaun 4: In Space
+#   Worst movie: Star Wars Episode I: The Phantom Menace
 
 #   NOTES:
 # - What makes these records easy to work with?
@@ -35,11 +35,11 @@ def main():
     title_number_list = best_movie(title_list, rating_list)
     worst_movie(title_number_list)
 
-def number_of_movies():
+def number_of_movies(): #naming convention -> look at the return.
     title_list = []
     for title in movies:
         title_list.append(title['title'])
-    print('Total number of movies:',len(title_list))
+    print('Total number of movies:',len(title_list)) #It is better to not print it whithin the function. Why? If it is a large function, you can use it efficient -> You can make a different function or do it in the main(). You can also put it in the function that calls the function.
     return title_list
 
 def average_of_movies(title_list):
