@@ -22,8 +22,6 @@
 #   Actor with best average rating: Frank Welker
 #   Actor with best average rating: Orson Welles
 #   Least popular genre in the 1980's: horror
-#   Least popular genre in the 1980's: action
-#   Least popular genre in the 1980's: drama
 
 #   NOTES:
 # - What makes these records easy to work with?
@@ -37,8 +35,7 @@ from movie_data import movies
 #   === === === CODE === === ==== 
 
 def main():
-    list, dictionary = [], {}
-    actor_amountmovies = extracting_data(list, dictionary)
+    actor_amountmovies = count_actors() 
     actors_most_movies(actor_amountmovies)
     actor_ratings =  actor_and_ratings(actor_amountmovies)
     best_average_rating(actor_amountmovies, actor_ratings)
@@ -46,11 +43,10 @@ def main():
     genre_dict_1980 = genre_1980(genre_dict)
     least_popular_genre_1980(genre_dict_1980) 
 
-def extracting_data(list, dictionary):
+def count_actors():
+    dictionary = {} 
     for movie in movies:
-        list.append(movie['actors'])
-    for actors in list:
-        for actor in actors:
+        for actor in movie['actors']:
             if actor not in dictionary:
                 dictionary[actor] = 0 
             dictionary[actor] += 1
@@ -89,7 +85,7 @@ def genres():
     
 def genre_1980(genre_dict):
     for movie in movies:
-        if movie['year'] == 1980:
+        if movie['year'] >= 1980 and movie['year'] < 1990:
             genre_dict[movie['genre']] += 1
     return genre_dict        
 

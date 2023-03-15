@@ -24,7 +24,7 @@
 
 # - With all that in mind: 
 #   What's the best Ally Sheedy movie?
-#   The best Ally Sheedy movie is: The Breakfast Club
+#   The best Ally Sheedy movie is: Wargames
 
 #   NOTES:
 # - What makes these records easy to work with?
@@ -76,9 +76,9 @@ def acted_with_JN():
 
 def final_ratings(note2_movies_ratings, actors):
     for movie in movies:
-        for actor in actors:
-            if actor in movie['actors']:
-                note2_movies_ratings[movie['title']] += 1
+            for actor in actors:
+                if actor in movie['actors'] and 'Judd Nelson' not in movie['actors']:
+                    note2_movies_ratings[movie['title']] += 1
     return note2_movies_ratings
 
 def Ally_movies(note3_movies_ratings):
@@ -98,7 +98,7 @@ def best_Ally_movie(Ally_movies_rating):
     for title, rating in Ally_movies_rating:
         if rating == highest_rating[1]:
             print('The best Ally Sheedy movie is:', title)
-               
+
 #   === === === IMPORT GUARD === === ==== 
 if __name__ == '__main__':
     main()
