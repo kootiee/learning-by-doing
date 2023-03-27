@@ -61,7 +61,7 @@ def chosen_option(option, data_movies, title_year_actors_genre):
     elif option == 2:
         search_by_actor(title_year_actors_genre)
     elif option == 3:
-        search_by_genre(title_year_actors_genre)
+        search_by_genre(title_year_actors_genre) 
     elif option == 4:
         data_movies = add_movie(data_movies)
     elif option >= 6:

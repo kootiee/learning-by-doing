@@ -107,7 +107,6 @@ def add_movie_to_database(data_movie, add_title, add_actor, add_year, add_genre,
     for item in [add_title, add_actor, add_year, add_genre, add_rating]:
         file.write('\n')
         file.write(item)
-        
     file.close()
 
 #   === === === IMPORT GUARD === === ==== 
