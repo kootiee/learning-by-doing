@@ -32,6 +32,15 @@ This must be done __every time__ you want to run your programs.
 . venv/bin/activate
 ```
   * Your terminal prompt should now start with `venv`, to show you it is active.
+
+## Install Dependencies
+
+This is a one-time setup, but must be done __after__ you are in your venv.
+
+``` bash
+. venv/bin/activate
+```
+
 # The Most Basic Git Basics
 
 Whole books have been written on git, and at some point, [reading one is a good idea.](https://git-scm.com/book/en/v2) However, what you need to know right now is:
