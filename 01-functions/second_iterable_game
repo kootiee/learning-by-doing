@@ -1,0 +1,38 @@
+#   === === === NUMBER GUESSING GAME === === ==== 
+
+#   THE MISSION
+# - The computer picks a number between 1 and 100, and asks you to guess.
+# - It tells you if you were too high or too low, and gives you six chances to guess.
+
+from random import randint
+
+def main():
+    number, chances = randint(1,100), 5
+    user_number = int(input('Hey user, please pick a number between 0 and 100: '))
+    guessing(number, user_number, chances)
+
+def guessing(number, user_number, chances):
+    while chances != 0:
+        if number == user_number:
+            print('Fantastic! You won. ')
+            break
+        chances, user_number = higher_lower(number, user_number, chances)
+    else:
+        print('Sorry! Game over')
+
+
+def higher_lower(number, user_number, chances):
+    print('You have', chances, 'chances left.', end = ' ')
+    if number > user_number:
+        user_number = int(input('Please enter a new higer number: '))
+        chances = chances -1 
+    elif number < user_number:
+        user_number = int(input('Please enter a new lower number: '))
+        chances = chances -1
+    return chances, user_number
+          
+#   IMPORT GUARD
+if __name__ == '__main__':
+     main()
+
+# opdracht:functie max 5 regels

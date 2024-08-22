@@ -1,0 +1,37 @@
+#   === === === NUMBER GUESSING GAME === === ==== 
+
+#   THE MISSION
+# - The computer picks a number between 1 and 100, and asks you to guess.
+# - It tells you if you were too high or too low, and gives you six chances to guess.
+
+from random import randint
+
+def main():
+    count = 6
+    special_number = randint(1,100)
+    guessing(count, special_number)
+
+def guessing(count, special_number):
+    guess = int(input('hey user, pick a number between 0 and 100: '))
+    counting(count, special_number, guess)
+
+def counting(count, special_number, guess):
+    if count > 1:
+        count -= 1
+        lower_higher(count, special_number, guess)
+    else:
+        print('Game over. Next time better!')
+
+def lower_higher(count, special_number, guess):
+    if guess == special_number:
+        print('You are amazing! You won this game. The winning number is indeed', str(guess) + '.\n' )
+    elif guess > special_number:
+        print('Almost! You did your best. You still have', count, 'guesses left. Please try a lower number.\n')
+        guessing(count, special_number)
+    elif guess < special_number:
+        print('Almost! You did your best. You still have', count, 'guesses left. Please try a higher number.\n')
+        guessing(count, special_number)       
+
+#   IMPORT GUARD
+if __name__ == '__main__':
+     main()
