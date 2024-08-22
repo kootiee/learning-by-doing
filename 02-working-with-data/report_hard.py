@@ -23,11 +23,7 @@
 #   Actor with best average rating: Orson Welles
 #   Least popular genre in the 1980's: horror
 
-#   NOTES:
-# - What makes these records easy to work with?
-#  
-# - What makes these records difficult to work with? 
-# 
+
 #   === === === IMPORT STATEMENTS === === ==== 
 
 from movie_data import movies

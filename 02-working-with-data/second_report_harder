@@ -1,0 +1,102 @@
+#   === === === Working With Data === === ==== 
+
+
+#   GOOD TO KNOW:
+# - Record (also called a structure, struct, or compound data): 
+#   A basic data structure. Records in a database or spreadsheet are usually called "rows". 
+#   A record is a collection of fields, possibly of different data types, typically in a fixed number and sequence.
+# - Records are provided. The exercise will be about sorting, searching, and altering those records. 
+# - 'My First IMDB':
+#   The Internet Movie Database (IMDb) is an online database containing information and statistics.
+#   It's all about movies, TV shows and video games as well as actors, directors and other film industry professionals.
+
+
+#   THE MISSION:
+# - This program will import the movie data, and print the answer to the following question. The answer is one single movie title, with double quotes. The question is: 
+# - Matthew Broderick sucks. He makes every movie one point worse. 
+
+
+#   Judd Nelson is harsh. He makes every movie one point better. Moreover, he's so cool, that his coolness is contagious and does not obey the laws of space-time. 
+#   Anyone who has ever been in a movie with Judd Nelson, makes every other movie they're in one point better. 
+
+
+# - In other words:
+#   note_I ----> Matthew Broderick ----> rating of the movie goes down with one point. 
+#   note_II ----> Judd Nelson ----> rating of the movie goes up with one point.
+#   note_III ----> Actor who has acted with Judd Nelson ----> rating of the movie goes up with one point.
+
+
+# - With all that in mind: 
+#   What's the best Ally Sheedy movie?
+
+ 
+#   === === === IMPORT STATEMENTS === === ==== 
+
+
+from movie_data import movies
+
+
+#   === === === CODE === === ==== 
+
+
+def main():
+    matthew_rating_down(movies)
+    judd_rating_up(movies)
+    acting_with_judd_rating_up(movies)
+    movies_containing_ally_list = movies_containing_ally(movies)
+    best_ally_movie(movies_containing_ally_list)
+
+
+def matthew_rating_down(movie_data):
+    for movie in movie_data:
+        if "Matthew Broderick" in movie['actors']:
+            movie['rating'] -= 1
+    
+
+def judd_rating_up(movie_data):
+    for movie in movie_data:
+        if "Judd Nelson"  in movie['actors']:
+            movie['rating'] += 1
+
+
+def actors_acting_with_judd(movie_data):
+    actors_acting_with_judd_list = []
+    for movie in movie_data:
+        if "Judd Nelson"  in movie['actors']:
+            for actor in movie['actors']:
+                if actor not in actors_acting_with_judd_list and actor != 'Judd Nelson':
+                    actors_acting_with_judd_list.append(actor)
+    return actors_acting_with_judd_list
+
+
+def acting_with_judd_rating_up(movie_data):
+    actors_acting_with_judd_list = actors_acting_with_judd(movie_data)
+    for movie in movie_data:
+        for actor in actors_acting_with_judd_list:
+            if actor in movie['actors']:
+                movie['rating'] += 1
+
+
+def movies_containing_ally(movie_data):
+    movies_containing_ally_list = []
+    for movie in movie_data:
+        if "Ally Sheedy"  in movie['actors']:
+            movies_containing_ally_list.append(movie)
+    return movies_containing_ally_list
+
+def best_ally_movie(movies_containing_ally_list):
+    ratings_ally_movies = []
+    for movie in movies_containing_ally_list:
+        ratings_ally_movies.append(movie['rating'])
+    max_rating = max(ratings_ally_movies)
+    for movie in movies_containing_ally_list:
+        if movie['rating'] == max_rating:
+            print('The best Ally Sheedy movie is', movie['title'])
+
+
+
+#   === === === IMPORT GUARD === === ==== 
+
+
+if __name__ == '__main__':
+    main()
