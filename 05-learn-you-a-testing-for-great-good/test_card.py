@@ -13,9 +13,19 @@ def test_parse_card_5H():
         "description": "a five of hearts"
     }
 
-def test_rank():
+
+def test_rank_2():
+    assert parse_card('2H') == {
+        'rank': '2',
+        'suit': 'hearts',
+        'description': 'a two of hearts'
+    }
+
+
+def test_rank_4():
     assert parse_card('4H') == {
         'rank': '4',
         'suit': 'hearts',
         'description': 'a four of hearts'
     }
+

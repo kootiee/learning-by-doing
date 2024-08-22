@@ -46,3 +46,6 @@ def parse_card(card_description):
         return {"rank": '5', "suit": 'hearts', "description": 'a five of hearts'}
     elif card_description == '4H':
         return {'rank': '4', 'suit': 'hearts', 'description': 'a four of hearts'}
+    elif card_description == '2H':
+        return {'rank': '2', 'suit': 'hearts', 'description': 'a two of hearts'}
+
