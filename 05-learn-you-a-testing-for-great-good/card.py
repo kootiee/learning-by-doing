@@ -42,10 +42,12 @@
     
 
 def parse_card(card_description):
-    if card_description == '5H':
-        return {"rank": '5', "suit": 'hearts', "description": 'a five of hearts'}
-    elif card_description == '4H':
-        return {'rank': '4', 'suit': 'hearts', 'description': 'a four of hearts'}
-    elif card_description == '2H':
-        return {'rank': '2', 'suit': 'hearts', 'description': 'a two of hearts'}
+    rank = card_description[0]
+    rank_dict = {'A':'ace', '2':'two', '3':'three', '4':'four', '5':'five', '6':'six', '7':'seven', '8':'eight', '9':'nine', '10':'ten', 'J':'jack', 'Q':'queen', 'K':'king'}
+    return {
+        'rank': rank,
+        'suit': 'hearts',
+        'description': f'a {rank_dict[rank]} of hearts'
+    }
 
+#ace and eight -> description! Test toevoegen want deze gaat falen!
