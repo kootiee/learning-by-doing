@@ -22,32 +22,16 @@
 #   - No global variables.
 
 
-# import random
+RANK_DICT = {'A':'ace', '2':'two', '3':'three', '4':'four', '5':'five', '6':'six', '7':'seven', '8':'eight', '9':'nine', '10':'ten', 'J':'jack', 'Q':'queen', 'K':'king'}
+SUITS_DICT = {'C':'clubs', 'H': 'hearts', 'S':'spades', 'D':'diamonds'}
 
-# def characteristics_of_the_card():
-#     ranks = {1: ['A','ace'], 2: ['2','two'], 3: ['3','three'], 4: ['4','four'], 5: ['5','five'] , 6: ['6','six'] , 7: ['7', 'seven'], 8: ['8','eight'], 9: ['9','nine'], 10: ['10', 'ten'], 11: ['J', 'jack'], 12: ['Q', 'queen'], 13: ['K','king']}
-#     suits = {1:['C','clubs'], 2:['H','hearts'], 3:['S','spades'], 4:['D','diamonds']}
-#     return ranks, suits
-
-
-# def random_ranks_and_suits(ranks, suits):
-#     selected_ranks = ranks[random.randint(1, 13)]
-#     selected_suits = suits[random.randint(1, 4)]
-#     return selected_ranks, selected_suits
-
-
-# def description_of_the_card(selected_ranks, selected_suits):
-#     card_description = [selected_ranks[0], selected_suits[0], 'a'+selected_ranks[1]+'of'+selected_suits[1]]
-#     return card_description
-    
 
 def parse_card(card_description):
-    rank = card_description[0]
-    rank_dict = {'A':'ace', '2':'two', '3':'three', '4':'four', '5':'five', '6':'six', '7':'seven', '8':'eight', '9':'nine', '10':'ten', 'J':'jack', 'Q':'queen', 'K':'king'}
+    rank, suit = card_description[0], card_description[1]
+    description_value = f'a{"n" if rank in ("8","A") else ""} {RANK_DICT[rank]} of {SUITS_DICT[suit]}'
     return {
         'rank': rank,
-        'suit': 'hearts',
-        'description': f'a {rank_dict[rank]} of hearts'
+        'suit': SUITS_DICT[suit],
+        'description': description_value
     }
 
-#ace and eight -> description! Test toevoegen want deze gaat falen!
