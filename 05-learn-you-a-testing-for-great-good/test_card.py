@@ -8,6 +8,7 @@ from card import parse_card
 #Elke python-bestandje is een module. En elke mapje/directory (__init__.py) is een package
 #constante variable -> schrijf je in all-caps (conventie)
 #bij elke WERKENDE test -> git commit
+#bekijk commit conventie document (Joris)
 
 def test_rank_2H():
     assert parse_card('2H') == {
